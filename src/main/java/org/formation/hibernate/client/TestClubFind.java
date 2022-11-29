@@ -5,8 +5,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import org.formation.hibernate.entity.Club;
-
 public class TestClubFind {
 	public static void main(String[] args) {
 
@@ -15,12 +13,7 @@ public class TestClubFind {
 		EntityTransaction txn = em.getTransaction();
 		try {
 			txn.begin();
-			Club c1 = em.find(Club.class, 1L);
-			
-			c1.setNbrNulTotal(9L);
-			
-			System.out.println(c1);
- 	
+
 			
 			
 

@@ -1,28 +1,34 @@
 package org.formation.hibernate.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Club {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private int id;
 	private String name;
-	private Long nbrVictoireTotal;
-	private Long nbrNulTotal;
-	private Long nbrDefaiteTotal;
-	private Long nbrButMarquer;
-	private Long nbrButPris;
+	private int nbrVictoireTotal;
+	private int nbrNulTotal;
+	private int nbrDefaiteTotal;
+	private int nbrButMarquer;
+	private int nbrButPris;
+	@OneToMany(mappedBy = "club")
+	private Set<Joueur> joueurs = new HashSet<Joueur>();
 	
 	public Club() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Club(String name, Long nbrVictoireTotal, Long nbrNulTotal, Long nbrDefaiteTotal, Long nbrButMarquer,
-			Long nbrButPris) {
+	public Club(String name, int nbrVictoireTotal, int nbrNulTotal, int nbrDefaiteTotal, int nbrButMarquer,
+			int nbrButPris) {
 		super();
 		this.name = name;
 		this.nbrVictoireTotal = nbrVictoireTotal;
@@ -30,6 +36,15 @@ public class Club {
 		this.nbrDefaiteTotal = nbrDefaiteTotal;
 		this.nbrButMarquer = nbrButMarquer;
 		this.nbrButPris = nbrButPris;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -40,37 +55,55 @@ public class Club {
 		this.name = name;
 	}
 
-	public Long getNbrVictoireTotal() {
+	public int getNbrVictoireTotal() {
 		return nbrVictoireTotal;
 	}
 
-	public void setNbrVictoireTotal(Long nbrVictoireTotal) {
+	public void setNbrVictoireTotal(int nbrVictoireTotal) {
 		this.nbrVictoireTotal = nbrVictoireTotal;
 	}
 
-	public Long getNbrNulTotal() {
+	public int getNbrNulTotal() {
 		return nbrNulTotal;
 	}
 
-	public void setNbrNulTotal(Long nbrNulTotal) {
+	public void setNbrNulTotal(int nbrNulTotal) {
 		this.nbrNulTotal = nbrNulTotal;
 	}
 
-	public Long getNbrDefaiteTotal() {
+	public int getNbrDefaiteTotal() {
 		return nbrDefaiteTotal;
 	}
 
-	public void setNbrDefaiteTotal(Long nbrDefaiteTotal) {
+	public void setNbrDefaiteTotal(int nbrDefaiteTotal) {
 		this.nbrDefaiteTotal = nbrDefaiteTotal;
 	}
 
-	public Long getNbrButPris() {
+	public int getNbrButMarquer() {
+		return nbrButMarquer;
+	}
+
+	public void setNbrButMarquer(int nbrButMarquer) {
+		this.nbrButMarquer = nbrButMarquer;
+	}
+
+	public int getNbrButPris() {
 		return nbrButPris;
 	}
 
-	public void setNbrButPris(Long nbrButPris) {
+	public void setNbrButPris(int nbrButPris) {
 		this.nbrButPris = nbrButPris;
 	}
+
+	public Set<Joueur> getJoueurs() {
+		return joueurs;
+	}
+
+	public void setJoueurs(Set<Joueur> joueurs) {
+		this.joueurs = joueurs;
+	}
+	
+	
 
 	@Override
 	public String toString() {
